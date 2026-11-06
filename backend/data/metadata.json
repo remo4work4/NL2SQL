@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "tables": [
+    {
+      "table": "customers",
+      "name": "客户表",
+      "description": "记录客户基本信息，粒度为单个客户。",
+      "columns": [
+        {
+          "column": "id",
+          "name": "客户ID",
+          "description": "客户唯一标识，整数类型。",
+          "enum_values": []
+        },
+        {
+          "column": "name",
+          "name": "客户名称",
+          "description": "客户姓名或编号，文本类型。",
+          "enum_values": []
+        },
+        {
+          "column": "city",
+          "name": "城市",
+          "description": "客户所在城市，文本类型。",
+          "enum_values": [
+            "上海",
+            "南京",
+            "厦门",
+            "哈尔滨",
+            "天津",
+            "成都",
+            "长沙"
+          ]
+        },
+        {
+          "column": "region",
+          "name": "区域",
+          "description": "客户所属地理大区，文本类型。",
+          "enum_values": [
+            "东北",
+            "华东",
+            "华中",
+            "华北",
+            "华南",
+            "西南"
+          ]
+        },
+        {
+          "column": "level",
+          "name": "客户等级",
+          "description": "客户会员等级，文本类型。",
+          "enum_values": [
+            "普通",
+            "金牌",
+            "银牌"
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "table": "orders",
+      "name": "订单表",
+      "description": "记录每笔销售订单明细，粒度为单条订单。",
+      "columns": [
+        {
+          "column": "id",
+          "name": "订单ID",
+          "description": "订单唯一标识，整数类型。",
+          "enum_values": []
+        },
+        {
+          "column": "order_date",
+          "name": "下单日期",
+          "description": "订单创建日期，格式如YYYY-MM-DD。",
+          "enum_values": []
+        },
+        {
+          "column": "customer_id",
+          "name": "客户ID",
+          "description": "关联的客户标识，整数类型。",
+          "enum_values": []
+        },
+        {
+          "column": "product_id",
+          "name": "产品ID",
+          "description": "关联的产品标识，整数类型。",
+          "enum_values": []
+        },
+        {
+          "column": "quantity",
+          "name": "购买数量",
+          "description": "该订单中产品的购买数量，单位件，整数类型。",
+          "enum_values": []
+        },
+        {
+          "column": "amount",
+          "name": "订单金额",
+          "description": "该订单的交易总金额，单位元，浮点类型。",
+          "enum_values": []
+        }
+      ],
+      "relations": [
+        {
+          "from_column": "customer_id",
+          "to_table": "customers",
+          "to_column": "id",
+          "description": "订单所属客户"
+        },
+        {
+          "from_column": "product_id",
+          "to_table": "products",
+          "to_column": "id",
+          "description": "订单所购产品"
+        }
+      ]
+    },
+    {
+      "table": "products",
+      "name": "产品表",
+      "description": "记录在售产品信息，粒度为单个产品。",
+      "columns": [
+        {
+          "column": "id",
+          "name": "产品ID",
+          "description": "产品唯一标识，整数类型。",
+          "enum_values": []
+        },
+        {
+          "column": "name",
+          "name": "产品名称",
+          "description": "产品名称，文本类型。",
+          "enum_values": []
+        },
+        {
+          "column": "category",
+          "name": "产品类别",
+          "description": "产品所属分类，文本类型。",
+          "enum_values": [
+            "家居日用",
+            "数码家电",
+            "服饰鞋包",
+            "美妆个护",
+            "食品生鲜"
+          ]
+        },
+        {
+          "column": "unit_price",
+          "name": "单价",
+          "description": "产品销售单价，单位元，浮点类型。",
+          "enum_values": []
+        }
+      ],
+      "relations": []
+    }
+  ]
+}

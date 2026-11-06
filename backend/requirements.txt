@@ -1,0 +1,32 @@
+# Web 框架
+fastapi>=0.115
+uvicorn[standard]>=0.32
+sse-starlette>=2.1
+
+# 配置
+pydantic-settings>=2.6
+
+# LLM（LangChain + 百炼 OpenAI 兼容端点）
+langchain>=1.0
+langchain-openai>=1.0
+
+# SQL 解析（安全校验）
+sqlparse>=0.5
+
+# HTTP 客户端（冒烟脚本 / 测试客户端）
+httpx>=0.27
+
+# 测试
+pytest>=8.3
+
+# RAG 语义检索（Phase 6）：本地 BGE embedding + Chroma 向量库
+chromadb>=1.0
+sentence-transformers>=5.0
+torch>=2.9
+
+# 双路检索（Phase 6 增强）：BM25 词法路
+rank-bm25>=0.2
+jieba>=0.42
+
+# 共享限流（Phase 8）：Redis 令牌桶后端（可插拔，无 Redis 时用 SQLite 后端）
+redis>=5.0

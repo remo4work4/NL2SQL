@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family:
+    -apple-system, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  color: #e8ecf6;
+  background:
+    radial-gradient(1100px 700px at 85% -10%, rgba(124, 108, 240, 0.16), transparent 60%),
+    radial-gradient(900px 600px at -10% 110%, rgba(77, 163, 255, 0.12), transparent 55%),
+    #070b14;
+  background-attachment: fixed;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* 星图网格：极淡的坐标线 */
+.app-bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* 极光光斑（仅登录页使用，缓慢漂移） */
+.aurora-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+  animation: aurora-drift 26s ease-in-out infinite alternate;
+}
+
+.aurora-blob.b2 {
+  animation-duration: 34s;
+  animation-delay: -12s;
+}
+
+@keyframes aurora-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(60px, -40px, 0) scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob {
+    animation: none;
+  }
+}
+
+/* 渐变标题文字 */
+.gradient-text {
+  background: linear-gradient(100deg, #8ec5ff 0%, #4da3ff 45%, #9d8cff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 主操作按钮光晕 */
+.btn-glow {
+  box-shadow: 0 0 18px rgba(77, 163, 255, 0.28);
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.4);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::selection {
+  background: rgba(77, 163, 255, 0.35);
+}
+
+/* 会话列表项：左侧 2px 留白作选中指示位 */
+.session-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+}
+
+.session-item:hover {
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.session-actions {
+  display: none;
+}
+
+.session-item:hover .session-actions {
+  display: flex;
+}
